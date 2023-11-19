@@ -1,31 +1,50 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
-let formattedDate
-let currentDate = new Date
+const shortDate = { weekday: "short", day: "numeric", month: "short" }
+const longDate = { weekday: "long", day: "numeric", month: "long" }
 
-export default function LocalDate() {
 
-  const [date, setDate] = useState("")
+const formatDate = () => {
+  const currentDate = new Date()
+  let formattedDate = window.innerWidth < 700
+    ? currentDate.toLocaleDateString("en-US", shortDate)
+    : currentDate.toLocaleDateString("en-US", longDate)
+  let parts = formattedDate.split(" ")
+  return `${parts[0]} ${parts[2]} ${parts[1]}`
+}
+
+
+export default function LocalDate () {
+
+  const [formattedDate, setFormattedDate] = useState(formatDate());
+  const intervalRef = useRef(null)
   
   useEffect(() => {
-    const interval = setInterval(() => {
-      currentDate = new Date
-    }, 2000)
-    console.log("called")
-    if (window.innerWidth < 735) {
-      formattedDate = currentDate.toLocaleDateString("en-US", { weekday: "short", day: "numeric", month: "short" })
-    } else {
-      formattedDate = currentDate.toLocaleDateString("en-US", { weekday: "long", day: "numeric", month: "long" })
+    
+    const getNewDate = () => {
+      setFormattedDate(formatDate())
     }
+    
+    const getNewDateInterval = () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+      intervalRef.current = setInterval(getNewDate, 2000)
+    }
+    
+    //call once to start interval
+    getNewDateInterval()
 
-    let parts = formattedDate.split(" ")
-    let formattedDateSwapped = `${parts[0]} ${parts[2]} ${parts[1]}`
-    setDate(formattedDateSwapped)
+    window.addEventListener("resize", getNewDate)
 
-    return clearInterval(interval)
-  }, [currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), window.innerWidth])
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+      window.removeEventListener("resize", getNewDate)
+    }
+  }, [])
 
-  return (
-    <h2 id="date">{date}</h2>
-  )
+
+  return <p id="date"><b>{formattedDate}</b></p>
 }

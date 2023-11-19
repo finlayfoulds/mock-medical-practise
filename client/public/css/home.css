@@ -1,0 +1,93 @@
+#title-container {
+  padding: 85px;
+}
+
+#title-container svg {
+  height: 50px;
+}
+
+#home-image {
+  width: 100%;
+  position: relative;
+}
+
+#home-image-container::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  background: #2b58a5;
+  box-shadow: 0 -1px 15px black;
+}
+
+#about {
+  display: inline-block;
+  background-color: #48a0e0;
+}
+
+#about::after {
+  margin-top: 2px;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  background: #2b58a5;
+}
+
+#about p {
+  margin: 30px 30px 50px 45px;
+  font-size: 1.5rem;
+  color: white;
+}
+
+#about h1 {
+  margin: 60px 30px 0 45px;
+  display: inline-block;
+  color: #2b58a5;
+}
+
+#about img {
+  margin: 40px 20px 20px 20px;
+  float: right;
+  width: 50%;
+  border: 3vw solid #2b58a5;
+  border-radius: 50%;
+}
+
+#find-us {
+  width: 100%;
+  padding: 20px 0;
+}
+
+#find-us div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 10px solid #2b58a5;
+  padding: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+
+#find-us img {
+  width: 40%;
+  margin: 20px;
+}
+
+#find-us h1 {
+  margin: 25px;
+  color: #4762aa;
+}
+
+#find-us address {
+  font-size: 1.5rem;
+  color: #2b58a5;
+}
+
+#find-us hr {
+  border: 0;
+  height: 1px;
+  background-color: grey;
+  width: 100%;
+  margin: 5px 5px 5px 0;
+}

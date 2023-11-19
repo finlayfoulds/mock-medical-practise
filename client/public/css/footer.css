@@ -1,0 +1,17 @@
+footer {
+  padding: 20px;
+  background: linear-gradient(to bottom right, #48a0e0, #07327d);
+}
+
+footer p:nth-of-type(3) {
+  text-align: center;
+  margin: 10px;
+}
+
+hr {
+  height: 1px;
+  border: 0;
+  background-color: black;
+  width: 100%;
+  margin: 10px;
+}

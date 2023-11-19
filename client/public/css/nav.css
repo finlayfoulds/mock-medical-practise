@@ -1,0 +1,55 @@
+nav {
+  position: relative;
+  box-shadow: 0 1px 15px black;
+}
+
+#logo svg {
+  height: 40px;
+}
+
+nav::after {
+  margin-top: 2px;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  background: #2b58a5;
+}
+
+#logo {
+  display: inline-block;
+  margin: 25px 0 0 15px;
+}
+
+#date {
+  display: inline-block;
+  position: absolute;
+  margin: 25px 15px 0 15px;
+  right: 10px;
+  font-size: large;
+  color: #005ebd;
+}
+
+nav div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 40px;
+}
+
+nav div a {
+  text-decoration: none;
+  color: black;
+  margin: 5px;
+}
+
+#underline {
+  margin: 0 0 5px 0;
+  height: 4px;
+  bottom: 0;
+  border: 0;
+  position: absolute;
+  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+  background: linear-gradient(to bottom, #48a0e0 20%, #2b58a5);
+  box-shadow: 0 -14px 14px #48a0e0;
+}
